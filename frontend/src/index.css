@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  .glass {
+    --background: 222.2 47.4% 11.2%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 47.4% 11.2%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 47.4% 11.2%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 263.4 70% 50.4%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+/* Glass Theme Styling Overrides */
+html.glass {
+  background: radial-gradient(circle at 10% 20%, hsl(263.4 70% 15% / 0.8) 0%, transparent 50%),
+              radial-gradient(circle at 90% 80%, hsl(222.2 47.4% 10% / 0.8) 0%, transparent 50%),
+              #07080d;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+html.glass body {
+  background: transparent !important;
+}
+
+/* Make cards glassy */
+.glass .bg-card,
+.glass aside,
+.glass .border,
+.glass input,
+.glass select,
+.glass button.hover\:bg-muted:hover,
+.glass .bg-popover,
+.glass [role="dialog"] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass .bg-card {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+.glass aside {
+  background-color: rgba(15, 23, 42, 0.35) !important;
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.glass .border,
+.glass .border-b,
+.glass .border-r,
+.glass .border-t {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.glass input,
+.glass select,
+.glass textarea {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+}
+
+.glass input:focus,
+.glass select:focus,
+.glass textarea:focus {
+  border-color: hsl(263.4 70% 50.4% / 0.6) !important;
+  box-shadow: 0 0 0 2px hsl(263.4 70% 50.4% / 0.2) !important;
+  outline: none !important;
+}
+
+/* Glass dialog override */
+.glass [role="dialog"] {
+  background-color: rgba(15, 23, 42, 0.65) !important;
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 24px 64px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
+.glass .bg-muted {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.glass .hover\:bg-muted:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Modern Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-page-transition {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Spinner loader styles */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.spinner-ring {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: relative;
+  background: conic-gradient(from 0deg, transparent 30%, hsl(var(--primary)));
+  animation: spin 1s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-ring::after {
+  content: "";
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  background: hsl(var(--background));
+  border-radius: 50%;
+}
+
+.glass .spinner-ring::after {
+  background: #0f172a;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Pulse animation for load logo */
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; filter: drop-shadow(0 0 2px hsl(var(--primary) / 0.2)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 12px hsl(var(--primary) / 0.6)); }
+}

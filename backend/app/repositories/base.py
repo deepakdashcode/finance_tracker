@@ -1,0 +1,11 @@
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
+
+class BaseRepository:
+    def __init__(self, db: AsyncSession):
+        self.db = db
+
+    async def get_by_id(self, model, id: int):
+        result = await self.db.execute(select(model).where(model.id == id))
+        return result.scalar_one_or_none()
