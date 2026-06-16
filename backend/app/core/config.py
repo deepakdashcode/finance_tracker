@@ -1,3 +1,4 @@
+from pydantic import field_validator
 from pydantic_settings import BaseSettings
 
 
@@ -10,6 +11,13 @@ class Settings(BaseSettings):
     GOOGLE_CLIENT_ID: str = ""
     FRONTEND_URL: str = "http://localhost:5173"
 
+    @field_validator("DATABASE_URL", mode="before")
+    @classmethod
+    def strip_database_url(cls, v: str) -> str:
+        if isinstance(v, str):
+            return v.strip()
+        return v
+
     @property
     def DEV_MODE(self) -> bool:
         return not self.GOOGLE_CLIENT_ID
@@ -18,3 +26,4 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
