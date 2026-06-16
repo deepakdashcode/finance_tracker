@@ -1,6 +1,6 @@
 # Finance Tracker
 
-A premium, modern Finance Tracker application built with **FastAPI** (Python) on the backend and **React** (Vite + TypeScript) on the frontend. The application features rich aesthetics including **Glassmorphism**, smooth transitions, page skeletons, and multi-profile wallet capabilities.
+A premium, modern Finance Tracker application built with **FastAPI** (Python) on the backend and **React** (Vite + TypeScript) on the frontend. The application features rich aesthetics including **Glassmorphism**, smooth transitions, page skeletons, and multi-profile wallet capabilities .
 
 ---
 
